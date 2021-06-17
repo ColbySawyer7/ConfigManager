@@ -13,4 +13,4 @@ install('netmiko')
 # Install GitPython
 install('GitPython')
 # Install Other Depen. 
-isntall('argparse')
+install('argparse')
