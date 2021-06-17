@@ -6,12 +6,23 @@
 #   Colby Sawyer
 #   Last Updated: 6/17/2021
 # =================================
+import git
+import sys
+import argparse
 
-
+assert sys.version_info >= (2,5)
 # =================================
 # =================================
 # =================================
-
+parser = argparse.ArgumentParser(description="Welcome to the Configuration Manager Help")
+args = parser.parse_args()
+# =================================
+# =================================
+# =================================
+def update():
+    print("Updating ConfigManager .......")
+    git_dir = "https://github.com/ColbySawyer7/ConfigManager.git"
+    git.cmd.Git(git_dir).pull()
 
 # =================================
 # =================================
