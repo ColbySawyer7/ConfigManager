@@ -9,8 +9,8 @@ def install(package):
 
 # Update to Python3 (if not)
 # Install Netmiko
-install(netmiko)
+install('netmiko')
 # Install GitPython
-install(GitPython)
+install('GitPython')
 # Install Other Depen. 
-isntall(argparse)
+isntall('argparse')
