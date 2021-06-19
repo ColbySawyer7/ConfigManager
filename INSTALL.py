@@ -11,7 +11,6 @@ def install(package):
 # Install Netmiko
 install('netmiko')
 # Install GitPython
-install('GitPython')
+install('gitpython')
 # Install Other Depen. 
 install('argparse')
-install('getpass')
