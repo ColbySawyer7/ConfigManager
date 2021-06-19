@@ -6,7 +6,8 @@
 #   Colby Sawyer
 #   Last Updated: 6/17/2021
 # =================================
-import git, sys, argparse, netmiko, getpass
+import git, sys, argparse, netmiko
+from getpass import getpass
 assert sys.version_info >= (2,5)
 
 # =================================
@@ -20,6 +21,7 @@ parser_connect = connection_group.add_argument('-d','--disconnect',metavar='', t
 args = parser.parse_args()
 #print(args)
 
+from devices import device_list
 
 # =================================
 # =================================
@@ -35,9 +37,12 @@ def update():
 from netmiko import ConnectHandler
 
 def connect(device):
-    print(" // Connecting to " + device + ".......")
-    
+    print(" // Initilazing " + device + " for connection.......")
+    device = next(d for d in device_list if d["temp_name"] == device)
+    device["password"] = getpass()
     # Will automatically 'disconnect()'
+    device.pop('temp_name', None)
+    print(device)
     with ConnectHandler(**device) as net_connect:
         print(net_connect.find_prompt())
 
@@ -46,11 +51,10 @@ def connect(device):
 # =================================
 def disconnect(device):
     print(" // Disconnecting from " + device + "......")
-    
-
 
 # =================================
 # =================================
+# Argument Handling
 # =================================
 if args.update:
     update()
